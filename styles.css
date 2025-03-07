@@ -1,0 +1,985 @@
+/* Общие стили */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #0f0f0f, #1a1a2e);
+    color: white;
+    overflow-x: hidden;
+}
+
+section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Герой-секция с анимацией */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Центрируем содержимое */
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding: 20px;
+}
+
+/* Контейнер для текста и кнопки */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Размещаем элементы равномерно */
+    align-items: center;
+    height: 100%; /* Занимает всю высоту родителя */
+    max-width: 90%;
+}
+
+/* Ограничение ширины текста */
+.hero h1 {
+    font-size: 4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    background: linear-gradient(90deg, #4e9fff, #ff4ec4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeIn 2s ease-in-out;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    max-width: 600px;
+    opacity: 0.9;
+    animation: slideUp 1.5s ease-in-out;
+    flex-grow: 1; /* Позволяет тексту занимать всё свободное пространство */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 130px; /* Добавляет немного отступа от края */
+}
+
+/* Контейнер для кнопки */
+.hero-button {
+    margin-top: auto; /* Прижимает кнопку вниз */
+    padding-bottom: 80px; /* Добавляет немного отступа от края */
+}
+
+/* Кнопка с 3D-эффектом */
+.cta {
+    padding: 15px 30px;
+    background: linear-gradient(90deg, #ff4ec4, #4e9fff);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(78, 159, 255, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.cta:hover {
+    transform: scale(1.1);
+}
+
+/* Плавная прокрутка */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Плавающая навигация */
+.nav {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 1000;
+}
+
+/* Кнопка-бургер */
+.burger-menu {
+    display: block;
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Анимация для кнопки при нажатии */
+.burger-menu:active {
+    animation: buttonClick 0.5s ease;
+}
+
+/* Креативная анимация кнопки */
+@keyframes buttonClick {
+    0% {
+        transform: scale(1);
+        border-radius: 50%;
+    }
+    50% {
+        transform: scale(1.2) rotate(45deg);
+        border-radius: 10%;
+    }
+    100% {
+        transform: scale(1);
+        border-radius: 50%;
+    }
+}
+
+/* Ссылки */
+.nav-links {
+    display: flex;
+    gap: 15px;
+    transform: translateY(-30px);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.nav-links.show {
+    transform: translateY(0);
+    opacity: 1;
+    animation: slideDown 0.5s ease-in-out;
+}
+
+/* Появление текста кнопок поочередно */
+.nav-links .nav-link {
+    opacity: 0;
+    animation: typewriter 0.5s ease forwards;
+}
+
+.nav-links .nav-link:nth-child(1) {
+    animation-delay: 0.3s;
+}
+.nav-links .nav-link:nth-child(2) {
+    animation-delay: 0.6s;
+}
+.nav-links .nav-link:nth-child(3) {
+    animation-delay: 0.9s;
+}
+.nav-links .nav-link:nth-child(4) {
+    animation-delay: 1.2s;
+}
+.nav-links .nav-link:nth-child(5) {
+    animation-delay: 1.5s;
+}
+.nav-links .nav-link:nth-child(6) {
+    animation-delay: 1.8s;
+}
+
+/* Анимация разворачивания меню */
+@keyframes slideDown {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Анимация для печатания текста */
+@keyframes typewriter {
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+    100% {
+        width: 100%;
+        opacity: 1;
+    }
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+    background: linear-gradient(90deg, #4e9fff, #ff4ec4);
+    font-size: 1.05rem;
+}
+
+/* Медиа-запрос для мобильных устройств */
+@media (max-width: 768px) {
+    .burger-menu {
+        display: block;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 50px;
+        left: 10px;
+        
+        padding: 10px;
+        border-radius: 10px;
+    }
+    /* Плавное разворачивание меню */
+    .nav-links.show {
+        display: flex;
+    }
+}
+
+/* УСЛУГИ ВКОНЦЕ */
+/* Секция услуг */
+.services {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+/* Заголовок и подзаголовок */
+.services h2 {
+    font-size: 3rem;
+    background: linear-gradient(90deg, #4e9fff, #ff4ec4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.services .subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 40px;
+}
+
+/* Уникальная сетка услуг */
+/* УСЛУГИ */
+/* Секция услуг */
+.services {
+    text-align: center;
+    padding: 60px 5px;
+    width: 100%;
+    overflow-x: hidden; /* Запрещаем горизонтальный скролл */
+    box-sizing: border-box;
+}
+
+/* Заголовок и подзаголовок */
+.services h2 {
+    font-size: 3rem;
+    background: linear-gradient(90deg, #4e9fff, #ff4ec4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+/* Уникальная сетка услуг */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Всегда 2 колонки */
+    gap: 20px; /* Уменьшенный отступ */
+    max-width: 920px; /* Максимальная ширина контейнера */
+    width: 100%;
+    margin: 0 auto; /* Центрирование контейнера */
+    padding: 20px 10px; /* Оптимизированные отступы */
+    box-sizing: border-box;
+}
+
+/* Стиль карточек */
+.grid-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease-in-out;
+    box-shadow: 0 0 5px rgba(255, 78, 196, 0.3);
+    position: relative;
+    overflow: hidden;
+    font-size: 1rem; /* Чуть уменьшенный шрифт для компактности */
+}
+
+/* Анимация при наведении */
+.grid-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 10px rgba(255, 78, 196, 0.6), 0 0 20px rgba(138, 43, 226, 0.4);
+}
+
+/* Иконки */
+.grid-item i {
+    margin-right: 8px;
+    font-size: 2rem; /* Чуть уменьшенные иконки для узких экранов */
+    color: #ff4ec4;
+}
+
+/* Медиа-запрос для узких экранов (меньше 480px) */
+@media (max-width: 480px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Гибкие 2 колонки */
+        gap: 20px; /* Минимальные отступы */
+        padding: 10px 5px; /* Минимальные боковые отступы */
+    }
+    
+    .grid-item {
+        padding: 10px; /* Уменьшаем отступы внутри карточек */
+        font-size: 0.8rem; /* Ещё немного уменьшаем шрифт */
+    }
+    
+    .grid-item i {
+        font-size: 1.5rem; /* Ещё немного уменьшаем иконки */
+    }
+}
+
+
+/* Секция "Обо мне" */
+.about {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.about h2 {
+    font-size: 3rem;
+    background: linear-gradient(90deg, #ff4ec4, #4e9fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.about p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Секция FAQ */
+.faq {
+    padding: 60px 20px;
+    text-align: center;
+    margin-top: 60px;
+}
+
+/* Заголовок с сиренево-голубым градиентом */
+.faq h2 {
+    font-size: 3rem;
+    background: linear-gradient(90deg, #ff4ec4, #4e9fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 40px;
+}
+
+/* Вопросы */
+.faq-item {
+    margin-bottom: 20px;
+    text-align: left;
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Кнопки вопросов */
+.faq-question {
+    background-color: transparent;
+    border: 2px solid #8a2be2; /* Изменил рамку на сиреневую */
+    color: #8a2be2;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    width: 100%;
+    text-align: left;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* При наведении */
+.faq-question:hover {
+    background-color: #8a2be2;
+    color: white;
+    border-color: #6a1bb5;
+    box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+}
+
+/* Ответы */
+.faq-answer {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    background: rgba(138, 43, 226, 0.1); /* Легкий сиреневый фон */
+    padding: 0 15px;
+    border-left: 3px solid rgba(138, 43, 226, 0.5); /* Сиреневый акцент */
+    border-radius: 0 0 10px 10px;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, padding 0.5s ease-in-out, border-left 0.5s ease-in-out;
+}
+
+/* Когда ответ раскрыт */
+.faq-answer.open {
+    max-height: 500px;
+    opacity: 1;
+    padding: 15px;
+    border-left: 3px solid rgba(138, 43, 226, 1); /* Яркий акцент */
+}
+
+/* Портфолио */
+/* Секция Портфолио */
+.portfolio {
+    padding: 60px 20px;
+    text-align: center;
+    margin-top: 60px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* Отображение при появлении в зоне видимости */
+.portfolio.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.portfolio h2 {
+    font-size: 3rem;
+    color: #fff;
+    background: linear-gradient(90deg, #ff4ec4, #4e9fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 40px;
+}
+
+/* Галерея */
+.portfolio-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Элементы галереи */
+.portfolio-item {
+    display: block;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 15px;
+}
+
+/* Эффект при наведении */
+.portfolio-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+}
+
+/* ОТЗЫВЫ */
+
+/* Секция отзывов */
+.reviews {
+    padding: 60px 20px;
+    text-align: center;
+    margin-top: 60px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    /* Центрирование на больших экранах */
+    max-width: 1200px; /* Можно изменить на 1000px или 1400px по вкусу */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Анимация появления */
+.reviews.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Заголовок */
+.reviews h2 {
+    font-size: 3rem;
+    color: #fff;
+    background: linear-gradient(90deg, #4e9fff, #ff4ec4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 40px;
+}
+
+.reviews-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Всегда 2 карточки в строку */
+    gap: 20px;
+    justify-content: center;
+
+    /* Центрирование и ограничение ширины */
+    max-width: 800px; /* Подгоняем под 2 карточки */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Карточка отзыва */
+.review-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 1rem; /* Уменьшенный размер шрифта */
+    color: rgba(255, 255, 255, 0.7); /* Приглушённый белый цвет */
+    max-width: 400px;
+    box-shadow: 0 0 8px rgba(138, 43, 226, 0.4); /* Тусклая подсветка */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Эффект при наведении */
+.review-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(138, 43, 226, 0.6); /* Тусклая подсветка при наведении */
+    color: rgba(255, 255, 255, 0.9); /* Более яркий цвет текста при наведении */
+}
+
+/* Прогрес прокрутки */
+/* Скрыть стандартный прогресс-бар */
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Прогресс-бар кастомный */
+#progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 5px;
+    background: linear-gradient(90deg, #ff4ec4, #8a2be2);
+    z-index: 9999;
+    transition: width 0.1s ease-out, opacity 0.3s ease-out;
+    filter: blur(3px); /* Размытие прогресс-бара */
+    opacity: 0.5; /* Начальная прозрачность */
+}
+
+/* Эффект яркости при прокрутке */
+#progress-bar.active {
+    opacity: 1;
+    filter: blur(1px); /* Меньшее размытие при прокрутке */
+}
+
+/* Эффект для менее заметного прогресс-бара при застое */
+#progress-bar.inactive {
+    opacity: 0.3;
+    filter: blur(3px); /* Размытие увеличивается при застое */
+}
+
+/* Фото */
+/* Контейнер для фото */
+/* Секция, в которой будет двигаться фото */
+.photo-section {
+    position: relative;
+    width: 100%;
+    height: 400px; /* или другой размер по вашему желанию */
+    overflow: hidden;
+    background-color: #1a1a1a; /* Цвет фона секции */
+}
+
+/* Контейнер для фото */
+.photo-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(255, 78, 196, 0.7), 0 0 40px rgba(138, 43, 226, 0.5); /* Подсветка */
+    transition: box-shadow 0.3s ease-in-out; /* Плавная подсветка */
+}
+
+/* Фото */
+.photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Обрезка фото */
+    border-radius: 50%;
+}
+
+/* При наведении подсветка усиливается */
+.photo-section:hover .photo-container {
+    box-shadow: 0 0 50px rgba(255, 78, 196, 1), 0 0 60px rgba(138, 43, 226, 1);
+}
+
+/* Анимация парения фото по секции */
+@keyframes float {
+    0% {
+        transform: translate(-50%, -50%) translate(0, 0); /* Начальная позиция */
+    }
+    25% {
+        transform: translate(-50%, -50%) translate(30px, 10px); /* Двигаемся немного вбок */
+    }
+    50% {
+        transform: translate(-50%, -50%) translate(-30px, 40px); /* Двигаемся в другую сторону */
+    }
+    75% {
+        transform: translate(-50%, -50%) translate(10px, -30px); /* Двигаемся снова в разные направления */
+    }
+    100% {
+        transform: translate(-50%, -50%) translate(0, 0); /* Возвращаемся в исходную позицию */
+    }
+}
+
+/* Запуск анимации на фото */
+.photo-container {
+    animation: float 25s infinite ease-in-out;
+}
+
+/* КНОПКА ТЕЛЕГРАМ */
+.telegram-button {
+    position: fixed; /* Это гарантирует, что кнопка будет всегда фиксирована на экране */
+    bottom: 10px; /* Расстояние от нижнего края экрана */
+    left: 10px; /* Расстояние от левого края экрана */
+    background: linear-gradient(90deg, #ff4ec4, #4e9fff); /* Градиент от розового к фиолетовому */
+    border-radius: 50%; /* Округлая кнопка */
+    padding: 5px;
+    box-shadow: 0 0 20px rgba(255, 78, 196, 0.4), 0 0 30px rgba(138, 43, 226, 0.2); /* Подсветка, сделана полупрозрачной */
+    transition: transform 0.3s ease, opacity 1s ease; /* Плавное изменение opacity */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 9999; /* Чтобы кнопка была всегда сверху */
+    opacity: 0; /* Кнопка изначально скрыта */
+}
+
+/* Иконка Telegram */
+.telegram-button i {
+    font-size: 40px;
+    color: white;
+}
+
+/* Эффект шевеления кнопки */
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-10px);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+    75% {
+        transform: translateX(-10px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Применение эффекта шевеления */
+.telegram-button:hover {
+    animation: shake 0.5s ease-in-out infinite;
+    box-shadow: 0 0 40px rgba(255, 78, 196, 0.8), 0 0 50px rgba(138, 43, 226, 0.4); /* Уменьшаем интенсивность подсветки */
+    transform: translateY(-5px); /* Немного поднимет кнопку при наведении */
+}
+
+/* Таблица ------------------- */
+/* Секция с таблицей */
+.features {
+    padding: 60px 10px;
+    text-align: center;
+    margin-top: 60px;
+}
+
+/* Заголовок секции */
+.features h2 {
+    font-size: 3rem;
+    background: linear-gradient(90deg,#4e9fff ,#ff4ec4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+/* Подзаголовок */
+.features .subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 40px;
+}
+
+/* Контейнер таблицы */
+.table-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 5px; /* Минимальные боковые отступы */
+}
+
+/* Таблица */
+.custom-table {
+    width: 900px;
+    max-width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(10px);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Заголовок таблицы */
+.custom-table thead {
+    background: linear-gradient(90deg, #4e9fff, #ff4ec4);
+    color: white;
+}
+
+.custom-table thead th {
+    padding: 12px; /* Уменьшенные отступы */
+    font-size: 1.6rem; /* Уменьшенный размер шрифта */
+    text-transform: uppercase;
+}
+
+/* Строки таблицы */
+.custom-table tbody tr {
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* Чередование строк */
+.custom-table tbody tr:nth-child(odd) {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Ячейки */
+.custom-table td {
+    padding: 10px; /* Уменьшенные отступы */
+    font-size: 1.4rem; /* Уменьшенный размер шрифта */
+    color: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Анимация наведения */
+.custom-table tbody tr:hover {
+    background: rgba(255, 78, 196, 0.3);
+    box-shadow: 0 0 10px rgba(255, 78, 196, 0.5);
+    transform: scale(1.01);
+    cursor: pointer;
+}
+
+/* Адаптивность для планшетов и мобильных устройств */
+@media (max-width: 768px) {
+    .custom-table thead th {
+        padding: 8px; /* Ещё меньше отступов */
+        font-size: 1.4rem;
+    }
+
+    .custom-table td {
+        padding: 8px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .custom-table thead th,
+    .custom-table td {
+        padding: 5px;
+        font-size: 1.2rem; /* Минимально читаемый размер шрифта */
+    }
+}
+
+
+/* ПРАЙС ============= */
+/* Секция прайс-листа */
+.pricing {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.pricing h2 {
+    font-size: 3rem;
+    background: linear-gradient(90deg, #4e9fff, #ff4ec4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 40px;
+}
+
+.pricing .subtitle {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+/* Контейнер для карточек */
+.pricing-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Стиль для каждой карточки */
+.pricing-item {
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(255, 78, 196, 0.3); /* Розоватая подсветка */
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Заголовок карточки */
+.pricing-item h3 {
+    font-size: 1.8rem;
+    color: #ff4ec4; /* Розовый цвет для заголовка */
+    margin-bottom: 15px;
+}
+
+/* Список этапов в карточке */
+.pricing-item ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+/* Этапы */
+.pricing-item ul li {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+/* Сроки и цена */
+.pricing-item p {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/* Цена */
+.pricing-item .price {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #8a2be2; /* Сиреневый для цены */
+}
+
+/* Выделение подарков */
+.pricing-item ul .gift {
+    background-color: #ff4ec4;
+    color: white;
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+/* Эффект при наведении */
+.pricing-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(255, 78, 196, 0.7), 0 0 30px rgba(138, 43, 226, 0.5);
+    z-index: 10; /* Чтобы карточка была сверху */
+}
+
+/* Эффект гармошки */
+.pricing-item:hover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.05); /* Легкий фон при наведении */
+    z-index: -1;
+}
+
+/* Медиазапрос для мобильных устройств */
+@media (max-width: 768px) {
+    .pricing-container {
+        grid-template-columns: 1fr; /* 1 карточка на всю ширину */
+    }
+
+    .pricing-item {
+        margin-bottom: 20px;
+        background-color: #f9f9f9; /* Светло-серый фон для мобильных */
+    }
+
+    .pricing-item:hover {
+        transform: translateY(-5px); /* Меньше эффекта при наведении на мобильных */
+    }
+}
+
+/* Для еще более мелких экранов */
+@media (max-width: 480px) {
+    .pricing-item {
+        padding: 15px;
+    }
+
+    .pricing-item h3 {
+        font-size: 1.5rem;
+    }
+
+    .pricing-item .price {
+        font-size: 1.3rem;
+    }
+
+    .pricing-item ul li {
+        font-size: 1rem;
+    }
+}
+
+/* Стиль таблицы с рекламой */
+.ads-table {
+    margin-top: 20px;
+}
+
+.ads-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff; /* Белый фон для таблицы */
+    border-radius: 10px;
+
+}
+
+.ads-table th,
+.ads-table td {
+    text-align: left;
+    padding: 12px 15px;
+    font-size: 1rem;
+}
+
+/* Градиентный фон для шапки таблицы */
+.ads-table th {
+    background: linear-gradient(90deg,  #8a2be2); /* Розово-фиолетовый градиент */
+    color: black;
+    font-weight: bold;
+}
+
+/* Чередование строк таблицы */
+.ads-table tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1); /* Легкий серый для четных строк */
+}
+
+.ads-table tr:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.2); /* Легкий белый для нечетных строк */
+}
+
+/* Эффект при наведении на строку */
+.ads-table tr:hover {
+    background-color: rgba(138, 43, 226, 0.2); /* Легкое сиреневое выделение */
+}
+
+/* Цвет текста в ячейках */
+.ads-table td {
+    color: #555;
+    font-weight: normal;
+}
